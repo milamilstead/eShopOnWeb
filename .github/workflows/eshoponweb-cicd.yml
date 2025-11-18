@@ -10,7 +10,7 @@ env:
   LOCATION: 'eastus2' # Choose your Azure region
   TEMPLATE-FILE: '${{ github.workspace }}/infra/webapp.bicep'
   SUBSCRIPTION-ID: 'ee39cf53-8365-4576-948a-fde68b89d1de' # Replace with your subscription ID
-  WEBAPP-NAME: 'eshoponweb-milamilstead' # Replace NAME with unique identifier (lowercase, no spaces)
+  WEBAPP-NAME: 'eshoponweb-milapila' # Replace NAME with unique identifier (lowercase, no spaces)
 jobs:
   # Build and test job
   buildandtest:
@@ -83,6 +83,10 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.WEBAPP-NAME }}
+          package: ./publish
+      # ✅ Logout from Azure
+      - name: Azure Logout
+        run: az logout
           package: ./publish
       # ✅ Logout from Azure
       - name: Azure Logout
